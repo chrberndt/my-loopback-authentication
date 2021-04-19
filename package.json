@@ -32,7 +32,7 @@
     "preopenapi-spec": "npm run build",
     "openapi-spec": "node ./dist/openapi-spec",
     "prestart": "npm run rebuild",
-    "start": "node -r source-map-support/register .",
+    "start": "node -r dotenv/config -r source-map-support/register .",
     "clean": "lb-clean dist *.tsbuildinfo .eslintcache",
     "rebuild": "npm run clean && npm run build"
   },
@@ -49,12 +49,16 @@
     "!*/__tests__"
   ],
   "dependencies": {
+    "@loopback/authentication": "^7.2.0",
+    "@loopback/authentication-jwt": "^0.8.1",
     "@loopback/boot": "^3.3.1",
     "@loopback/core": "^2.15.1",
     "@loopback/repository": "^3.5.1",
     "@loopback/rest": "^9.2.1",
     "@loopback/rest-explorer": "^3.2.1",
     "@loopback/service-proxy": "^3.1.1",
+    "dotenv": "^8.2.0",
+    "loopback-connector-mongodb": "^6.0.0",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
