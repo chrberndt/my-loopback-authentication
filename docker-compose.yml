@@ -1,0 +1,12 @@
+version: '3.6'
+services:
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    env_file:
+    - .env
+    ports:
+      - 27017:27017
+    volumes:
+      - ./init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh
+      - ./data/db:/data/db
