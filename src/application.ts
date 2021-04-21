@@ -1,3 +1,18 @@
+import {AuthenticationComponent} from '@loopback/authentication';
+import {
+  JWTAuthenticationComponent,
+  UserServiceBindings
+} from '@loopback/authentication-jwt';
+// import {DbDataSource} from './datasources';
+import {MongoDataSource} from './datasources';
+
+// in the class constructor, we mount the two components we just imported,
+// AuthenticationComponent and JWTAuthenticationComponent
+// We also create a new datasource from the MongoDataSource we created in the previous step
+// and the UserServiceBindings, which define default options for the new datasource,
+// like its name, the repository to use for Users and UserCredentials
+// (which are in our case the default LoopBack 4 ones)
+
 import {BootMixin} from '@loopback/boot';
 import {ApplicationConfig} from '@loopback/core';
 import {
@@ -40,5 +55,15 @@ export class MyLoopbackAuthenticationApplication extends BootMixin(
         nested: true,
       },
     };
+
+  // ------ ADD SNIPPET AT THE BOTTOM ---------
+  // Mount authentication system
+  this.component(AuthenticationComponent);
+  // Mount jwt component
+  this.component(JWTAuthenticationComponent);
+  // Bind datasource
+  this.dataSource(MongoDataSource, UserServiceBindings.DATASOURCE_NAME);
+  // this.dataSource(DbDataSource, UserServiceBindings.DATASOURCE_NAME);
+  // ------------- END OF SNIPPET -------------
   }
 }
