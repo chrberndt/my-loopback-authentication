@@ -33,6 +33,7 @@
     "openapi-spec": "node ./dist/openapi-spec",
     "prestart": "npm run rebuild",
     "start": "node -r dotenv/config -r source-map-support/register .",
+    "start:watch": "tsc-watch --target es2017 --outDir ./dist --onSuccess \"node .\"",
     "clean": "lb-clean dist *.tsbuildinfo .eslintcache",
     "rebuild": "npm run clean && npm run build"
   },
@@ -59,6 +60,7 @@
     "@loopback/service-proxy": "^3.1.1",
     "dotenv": "^8.2.0",
     "loopback-connector-mongodb": "^6.0.0",
+    "tsc-watch": "^4.2.9",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
