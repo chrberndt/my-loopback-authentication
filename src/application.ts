@@ -4,7 +4,7 @@ import {
   UserServiceBindings
 } from '@loopback/authentication-jwt';
 // import {DbDataSource} from './datasources';
-import {MongoDataSource} from './datasources';
+import {PostgresDataSource} from './datasources';
 
 // in the class constructor, we mount the two components we just imported,
 // AuthenticationComponent and JWTAuthenticationComponent
@@ -62,7 +62,7 @@ export class MyLoopbackAuthenticationApplication extends BootMixin(
   // Mount jwt component
   this.component(JWTAuthenticationComponent);
   // Bind datasource
-  this.dataSource(MongoDataSource, UserServiceBindings.DATASOURCE_NAME);
+  this.dataSource(PostgresDataSource, UserServiceBindings.DATASOURCE_NAME);
   // this.dataSource(DbDataSource, UserServiceBindings.DATASOURCE_NAME);
   // ------------- END OF SNIPPET -------------
   }
